@@ -1,0 +1,7 @@
+.contentClass{
+    display: flex;
+    justify-content: space-between;
+}
+.font{
+    font-size: 18px;
+}

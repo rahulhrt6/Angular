@@ -1,0 +1,60 @@
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
+    <div class="card" style="padding-top:2%;border-color: blue;">
+        <div class="card-heading">
+            <h3 class="card-title p-2">{{isEdit?'Edit':'Create'}} User</h3>
+        </div>
+        <div class="card-body" style="width: 50%;">
+            <div class="form-control" [class.is-invalid]="username.invalid && username.touched"
+                [class.is-valid]="username.valid">
+                <label class="control-label" for="username">User Name</label>
+                <input type="text" required id="username" name="fn" [(ngModel)]="user.username" #username="ngModel"
+                    class="form-control" />
+                <span style="color: red;" class="is-invalid" *ngIf="username.invalid && username.touched">
+                    User is required!
+                </span>
+            </div>
+            <br />
+            <div class="form-control" [class.is-invalid]="fullEmailControl.invalid && fullEmailControl.touched"
+                [class.is-valid]="fullEmailControl.valid">
+                <label class="control-label" for="email">Email Address</label>
+                <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required name="email"
+                    [(ngModel)]="user.emailaddress" id="email" class="form-control" #fullEmailControl="ngModel" />
+                <div style="color: red;" class="is-invalid"
+                    *ngIf="fullEmailControl.invalid && fullEmailControl.touched">
+                    Email is required!
+                </div>
+            </div>
+            <br />
+            <div class="form-control" [class.is-invalid]="social.invalid && social.touched"
+                [class.is-valid]="social.valid">
+                <label class="control-label" for="imagePath">Social Connection</label>
+                <input type="text" required id="social" name="social" [(ngModel)]="user.socialconnection"
+                    #social="ngModel" class="form-control" />
+                <span style="color: red;" class="is-invalid" *ngIf="social.invalid && social.touched">
+                    Social Connection is required!
+                </span>
+            </div>
+            <br />
+            <div class="form-control" [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched"
+                [class.is-valid]="phoneNumber.valid">
+                <label class="control-label" for="phoneNumber">Phone Number</label>
+                <input type="number" required id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber"
+                    #phoneNumber="ngModel" class="form-control" />
+                <span style="color: red;" class="is-invalid" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                    Phone Nuber is required!
+                </span>
+            </div>
+            <br />
+        </div>
+        <div class="col-12" style="padding-left: 1%; padding-bottom: 1%;display: flex;">
+            <div style="padding-right: 2%;">
+                <button class="btn btn-primary" type="submit"
+                    [disabled]="employeeForm.invalid">{{isEdit?'Edit':'Create'}}</button>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="back()">Back to List</button>
+            </div>
+        </div>
+    </div>
+
+</form>

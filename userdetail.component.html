@@ -1,0 +1,65 @@
+<mat-card>
+    <div class="container" style="width: 31%;">
+        <mat-card class="example-card">
+            <mat-card-title-group style="padding-left: 41%;background: rgb(55, 177, 148);padding-top: 2%;">
+                <mat-card-title>
+                    <div>
+                        <h3 class="card-title" style="font-size: 20px;"><b>{{user.username}}</b></h3>
+                    </div>
+
+                </mat-card-title>
+            </mat-card-title-group>
+            <mat-card-content>
+                <div class="row vertical">
+                    <div class="col" style="padding-left: 5%;padding-right: 6%;padding-top: 3%;">
+                        <div class="contentClass">
+                            <div class="font">
+                                Status :
+                            </div>
+                            <div class="font">
+                                <b>{{user.status}}</b>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="contentClass">
+                            <div class="font">
+                                Social Connection :
+                            </div>
+                            <div class="font">
+                                <b>{{user.socialconnection}}</b>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="contentClass">
+                            <div class="font">
+                                Phone :
+                            </div>
+                            <div class="font">
+                                <b>{{user.phoneNumber}}</b>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="contentClass">
+                            <div class="font">
+                                Email :
+                            </div>
+                            <div class="font">
+                                <b>{{user.emailaddress}}</b>
+                            </div>
+
+                        </div>
+                        <br>
+                    </div>
+                    <br />
+                </div>
+                <div style="display: flex;justify-content: space-between;padding-top: 3%;">
+                    <button (click)="back()" mat-button color="primary"><b>Back to list</b></button>
+                    <button mat-button (click)="next()" color="accent"><b>Next user</b></button>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</mat-card>

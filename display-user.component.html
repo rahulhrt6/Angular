@@ -1,0 +1,70 @@
+<div>
+    <div class="example-container" style="display:flex ;justify-content: space-between;padding-left: 1%;
+    padding-right: 19%;">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="search" (keyup)="FilterChange($event)">
+        </mat-form-field>
+        <div>
+            <button mat-button (click)="FilterActive()" color="primary">Active</button>
+            <button mat-button (click)="FilterInActive()" color="accent">InActive</button>
+            <button mat-button (click)="FilterBlocked()" color="warn">Blocked</button>
+        </div>
+    </div>
+    <table style="width: 100%;" mat-table matSort [dataSource]="dataSource">
+        <ng-container matColumnDef="username">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> UserName</th>
+            <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="emailaddress">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.emailaddress}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneNumber">
+            <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="socialConnection">
+            <th mat-header-cell *matHeaderCellDef>Social Connection </th>
+            <td mat-cell *matCellDef="let element"> {{element.socialconnection}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="editUser(element)">
+                    <mat-icon>launch</mat-icon><h3 class="hide">Edit</h3>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteUser(element)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+                <button mat-icon-button color="danger" (click)="viewUser(element)">
+                    <mat-icon><i class="material-icons">remove_red_eye</i></mat-icon>
+                </button>
+                <!-- <button mat-fab color="primary" (click)="deleteUser(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button (click)="editUser(element)" mat-fab color="primary">
+                    <i class="bi bi-pencil">Edit</i>
+                </button>
+                <button (click)="viewUser(element)" mat-fab color="primary">
+                    <i class="bi bi-eye">View</i>
+                </button> -->
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="getRow(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="tableSizes" (pageChange)="onTableDataChange($event)" showFirstLastButtons
+        aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

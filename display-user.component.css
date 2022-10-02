@@ -1,0 +1,12 @@
+.hide {
+    display: none;
+  }
+  
+  .myDIV:hover + .hide {
+    display: block;
+    color: red;
+  }
+
+  .mat-button.mat-primary .mat-button-focus-hover + .hide{
+    background-color: transparent;
+  }
